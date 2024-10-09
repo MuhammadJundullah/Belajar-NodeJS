@@ -26,7 +26,15 @@ const rl = readline.createInterface({
 
 rl.question('Masukkan nama anda : ', (nama) => {
     rl.question('Masukkan nomor hp anda : ', (noHP) => {
-        console.log(`Terimakasih ${nama} sudah menginputkan ${noHP}`);
+        const contact = { nama, noHP };
+        const file = fs.readFileSync('data/contacts.json', 'utf8');
+        const contacts = JSON.parse(file);
+        contacts.push(contact);
+        
+        fs.writeFileSync("data/contacts.json", JSON.stringify(contacts));
+
+        console.log("Terimakasih sudah memasukkan data.")
+
         rl.close();
     }) 
 })
