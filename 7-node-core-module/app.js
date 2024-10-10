@@ -1,7 +1,7 @@
 // core module
 // file system
 
-const fs = require('fs');
+const fs = require("fs");
 
 // menuliskan string ke system secara sync
 // fs.writeFileSync("data/test.txt", "Hello World ini di tulis dengan Async", (e) => {
@@ -20,22 +20,21 @@ const fs = require('fs');
 // readline
 const readline = require("node:readline");
 const rl = readline.createInterface({
-    input : process.stdin,
-    output : process.stdout, 
+  input: process.stdin,
+  output: process.stdout,
 });
 
-rl.question('Masukkan nama anda : ', (nama) => {
-    rl.question('Masukkan nomor hp anda : ', (noHP) => {
-        const contact = { nama, noHP };
-        const file = fs.readFileSync('data/contacts.json', 'utf8');
-        const contacts = JSON.parse(file);
-        contacts.push(contact);
-        
-        fs.writeFileSync("data/contacts.json", JSON.stringify(contacts));
+rl.question("Masukkan nama anda : ", (nama) => {
+  rl.question("Masukkan nomor hp anda : ", (noHP) => {
+    const contact = { nama, noHP };
+    const file = fs.readFileSync("data/contacts.json", "utf8");
+    const contacts = JSON.parse(file);
+    contacts.push(contact);
 
-        console.log("Terimakasih sudah memasukkan data.")
+    fs.writeFileSync("data/contacts.json", JSON.stringify(contacts));
 
-        rl.close();
-    }) 
-})
+    console.log("Terimakasih sudah memasukkan data.");
 
+    rl.close();
+  });
+});
